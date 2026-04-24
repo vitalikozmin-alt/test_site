@@ -1,0 +1,1904 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1+1 Dance Studio — Võistlustants lastele Tallinnas, Pirita</title>
+  <meta name="description" content="1+1 Dance Studio — võistlustants lastele alates 3 aastat Tallinnas, Pirita. Mitmekordsed meistrid ja rahvusvaheliste võistluste võitjad." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #fdfcf8;
+      --bg2:     #fff8f2;
+      --bg3:     #fef3e8;
+      --text:    #1c1008;
+      --text2:   #6b5a50;
+      --text3:   #a89488;
+      --gold:    #c9a84c;
+      --gold-l:  #e8c97a;
+      --gold-d:  #9a7828;
+      --coral:   #e05d45;
+      --coral-l: #f5967f;
+      --dark:    #1a1210;
+      --dark2:   #231a16;
+      --white:   #ffffff;
+      --shadow:  rgba(28,16,8,0.09);
+      --radius:  14px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+
+    /* ─── HEADER ─────────────────────────────────── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0 48px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+
+    header.scrolled {
+      background: rgba(253,252,248,0.97);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 24px var(--shadow);
+    }
+
+    .logo { display: flex; align-items: center; text-decoration: none; }
+    .logo img { height: 42px; }
+    .logo-white { display: block; }
+    .logo-dark  { display: none; }
+    header.scrolled .logo-white { display: none; }
+    header.scrolled .logo-dark  { display: block; }
+
+    nav { display: flex; align-items: center; gap: 28px; }
+
+    nav a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+      transition: color 0.3s;
+    }
+
+    header.scrolled nav a { color: var(--text2); }
+    nav a:hover { color: var(--coral) !important; }
+
+    .nav-cta {
+      background: var(--coral);
+      color: var(--white) !important;
+      padding: 9px 22px;
+      border-radius: 30px;
+      transition: background 0.3s, transform 0.2s !important;
+    }
+
+    .nav-cta:hover { background: #c04030 !important; transform: translateY(-1px); }
+    header.scrolled .nav-cta { color: var(--white) !important; }
+
+    .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .burger span { display: block; width: 26px; height: 2px; background: var(--white); border-radius: 2px; transition: 0.3s; }
+    header.scrolled .burger span { background: var(--text); }
+
+    /* ─── HERO SPLIT ──────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-left {
+      background: var(--bg3);
+      padding: 140px 60px 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left::before {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+      bottom: -100px; right: -100px;
+      pointer-events: none;
+    }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      animation: heroZoom 18s ease-in-out infinite alternate;
+    }
+
+    .hero-right-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(254,243,232,0.35) 0%, transparent 40%);
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.03); }
+      to   { transform: scale(1.08); }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(224,93,69,0.1);
+      border: 1px solid rgba(224,93,69,0.25);
+      color: var(--coral);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 30px;
+      margin-bottom: 28px;
+      width: fit-content;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .hero-badge::before {
+      content: '';
+      display: block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--coral);
+      animation: blink 1.8s infinite;
+    }
+
+    @keyframes blink {
+      0%,100% { opacity: 1; } 50% { opacity: 0.3; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 4vw, 4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 20px;
+      animation: fadeUp 0.9s 0.1s ease both;
+    }
+
+    .hero-italic {
+      font-style: italic;
+      color: var(--coral);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text2);
+      font-weight: 400;
+      line-height: 1.7;
+      margin-bottom: 36px;
+      animation: fadeUp 1s 0.2s ease both;
+      max-width: 440px;
+    }
+
+    .hero-free {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--dark);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      padding: 3px 10px;
+      border-radius: 4px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      animation: fadeUp 1.1s 0.3s ease both;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--coral);
+      color: var(--white);
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 15px 36px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 6px 24px rgba(224,93,69,0.3);
+    }
+
+    .btn-primary:hover {
+      background: #c04030;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(224,93,69,0.4);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: var(--text);
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 36px;
+      border-radius: 50px;
+      border: 1.5px solid rgba(28,16,8,0.2);
+      cursor: pointer;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .btn-outline:hover { border-color: var(--coral); background: rgba(224,93,69,0.06); color: var(--coral); }
+
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-top: 40px;
+      animation: fadeUp 1.2s 0.4s ease both;
+    }
+
+    .hero-trust-divider {
+      width: 1px; height: 32px;
+      background: rgba(28,16,8,0.12);
+    }
+
+    .hero-trust-item { text-align: center; }
+
+    .hero-trust-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--gold-d);
+      line-height: 1;
+    }
+
+    .hero-trust-label {
+      font-size: 11px;
+      color: var(--text3);
+      letter-spacing: 0.05em;
+      margin-top: 2px;
+    }
+
+    /* ─── SECTION COMMON ─────────────────────────── */
+    section { padding: 96px 20px; }
+
+    .container { max-width: 1180px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--coral);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .section-line {
+      width: 48px;
+      height: 3px;
+      background: var(--coral);
+      border-radius: 2px;
+      margin-bottom: 40px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── ABOUT ─────────────────────────────────── */
+    .about { background: var(--bg); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--text2);
+      line-height: 1.85;
+      font-size: 1.02rem;
+      margin-bottom: 18px;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .about-image-wrap { position: relative; }
+
+    .about-image-wrap img {
+      width: 100%;
+      border-radius: var(--radius);
+      display: block;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      box-shadow: 0 24px 64px rgba(28,16,8,0.14);
+    }
+
+    .about-deco {
+      position: absolute;
+      bottom: -16px;
+      left: -16px;
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      background: var(--bg3);
+      border: 3px solid var(--gold-l);
+      z-index: -1;
+    }
+
+    .about-deco-2 {
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      width: 80px; height: 80px;
+      border-radius: var(--radius);
+      background: rgba(224,93,69,0.1);
+      border: 2px solid rgba(224,93,69,0.2);
+      z-index: -1;
+    }
+
+    .stats-row {
+      display: flex;
+      gap: 0;
+      margin-top: 40px;
+      background: var(--bg3);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(201,168,76,0.2);
+    }
+
+    .stat {
+      flex: 1;
+      text-align: center;
+      padding: 20px 12px;
+      border-right: 1px solid rgba(201,168,76,0.15);
+    }
+
+    .stat:last-child { border-right: none; }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold-d);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--text3);
+      letter-spacing: 0.04em;
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    /* ─── VIDEO ──────────────────────────────────── */
+    .video-section { background: var(--bg2); padding: 80px 20px; }
+
+    .video-wrap {
+      position: relative;
+      max-width: 840px;
+      margin: 0 auto;
+      border-radius: 18px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      box-shadow: 0 24px 80px rgba(28,16,8,0.16);
+    }
+
+    .video-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ─── TEACHERS ───────────────────────────────── */
+    .teachers { background: var(--bg); }
+
+    .teachers-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .teacher-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 20px var(--shadow);
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+
+    .teacher-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(28,16,8,0.14);
+    }
+
+    .teacher-photo-wrap { overflow: hidden; position: relative; }
+
+    .teacher-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      transition: transform 0.5s;
+    }
+
+    .teacher-card:hover .teacher-photo { transform: scale(1.04); }
+
+    .teacher-photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 40%;
+      background: linear-gradient(to top, rgba(28,16,8,0.5), transparent);
+      pointer-events: none;
+    }
+
+    .teacher-info { padding: 20px 18px 22px; }
+
+    .teacher-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .teacher-title {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--coral);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .teacher-desc {
+      font-size: 0.85rem;
+      color: var(--text2);
+      line-height: 1.7;
+    }
+
+    /* ─── GALLERY ─────────────────────────────────── */
+    .gallery { background: var(--bg2); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 220px;
+      gap: 10px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 10px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+    .gallery-item:nth-child(5) { grid-column: span 2; }
+    .gallery-item:nth-child(9) { grid-column: span 2; }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s;
+    }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(224,93,69,0.18);
+      opacity: 0;
+      transition: opacity 0.35s;
+      pointer-events: none;
+    }
+
+    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-item:hover::after { opacity: 1; }
+
+    /* ─── COURSES ─────────────────────────────────── */
+    .courses { background: var(--bg3); }
+
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .course-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 20px var(--shadow);
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+
+    .course-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 44px rgba(28,16,8,0.14);
+    }
+
+    .course-img-wrap {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .course-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s;
+    }
+
+    .course-card:hover .course-img-wrap img { transform: scale(1.05); }
+
+    .course-content { padding: 24px 22px 26px; }
+
+    .course-tag {
+      display: inline-block;
+      background: rgba(224,93,69,0.1);
+      color: var(--coral);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+
+    .course-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .course-desc {
+      font-size: 0.9rem;
+      color: var(--text2);
+      line-height: 1.65;
+    }
+
+    /* ─── PRICING ─────────────────────────────────── */
+    .pricing { background: var(--bg); }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    .price-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      box-shadow: 0 4px 20px var(--shadow);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-top: 4px solid var(--gold);
+    }
+
+    .price-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(28,16,8,0.12);
+    }
+
+    .price-card.featured { border-top-color: var(--coral); }
+
+    .price-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: var(--coral);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .price-icon { margin-bottom: 14px; }
+
+    .price-category {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .price-free {
+      font-size: 13px;
+      color: var(--coral);
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    .price-list { list-style: none; }
+
+    .price-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(28,16,8,0.06);
+      font-size: 0.93rem;
+    }
+
+    .price-list li:last-child { border-bottom: none; }
+    .price-list li span.label { color: var(--text2); }
+
+    .price-list li span.amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--gold-d);
+    }
+
+    /* ─── SCHEDULE ────────────────────────────────── */
+    .schedule { background: var(--bg2); }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .schedule-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px 22px;
+      box-shadow: 0 4px 16px var(--shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .schedule-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(28,16,8,0.11);
+    }
+
+    .schedule-level {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 4px 11px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    .schedule-level.lapsed { background: rgba(224,93,69,0.1); color: var(--coral); }
+    .schedule-level.voistlus { background: rgba(201,168,76,0.15); color: var(--gold-d); }
+    .schedule-level.taiskasvanud { background: rgba(28,16,8,0.07); color: var(--text2); }
+
+    .schedule-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .schedule-age {
+      font-size: 12px;
+      color: var(--text3);
+      margin-bottom: 14px;
+    }
+
+    .new-badge {
+      display: inline-block;
+      background: var(--coral);
+      color: var(--white);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 2px 7px;
+      border-radius: 10px;
+      vertical-align: middle;
+      margin-left: 5px;
+    }
+
+    .schedule-days { list-style: none; }
+
+    .schedule-days li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(28,16,8,0.05);
+      font-size: 0.88rem;
+      color: var(--text2);
+    }
+
+    .schedule-days li:last-child { border-bottom: none; }
+
+    .schedule-days li::before {
+      content: '';
+      display: block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--coral);
+      flex-shrink: 0;
+    }
+
+    .schedule-time {
+      margin-left: auto;
+      font-weight: 700;
+      color: var(--gold-d);
+      font-size: 0.88rem;
+      white-space: nowrap;
+    }
+
+    /* ─── TESTIMONIALS ────────────────────────────── */
+    .testimonials { background: var(--bg3); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px 26px;
+      box-shadow: 0 4px 20px var(--shadow);
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(28,16,8,0.12);
+    }
+
+    .quote-icon {
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      line-height: 0.5;
+      color: var(--coral);
+      opacity: 0.15;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .testimonial-text {
+      font-size: 1rem;
+      color: var(--text2);
+      line-height: 1.8;
+      font-style: italic;
+      margin-bottom: 22px;
+      padding-top: 16px;
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 16px;
+    }
+
+    .testimonial-stars span {
+      display: inline-block;
+      width: 13px; height: 13px;
+      background: var(--gold);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+
+    .author-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--coral), #f5967f);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: var(--white);
+      font-size: 1rem;
+    }
+
+    .author-name { font-weight: 700; font-size: 0.9rem; color: var(--text); }
+    .author-role { font-size: 11px; color: var(--text3); }
+
+    /* ─── REGISTER ────────────────────────────────── */
+    .register { background: var(--bg); }
+
+    .register-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: start;
+    }
+
+    .register-info .section-title { color: var(--text); }
+
+    .register-info p {
+      color: var(--text2);
+      line-height: 1.8;
+      margin-bottom: 32px;
+      font-size: 1rem;
+    }
+
+    .register-contacts { list-style: none; }
+
+    .register-contacts li {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(28,16,8,0.07);
+      color: var(--text2);
+      font-size: 0.93rem;
+    }
+
+    .register-contacts li:last-child { border-bottom: none; }
+
+    .contact-icon {
+      width: 36px; height: 36px;
+      border-radius: 9px;
+      background: rgba(224,93,69,0.09);
+      border: 1px solid rgba(224,93,69,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .register-contacts a { color: var(--text2); text-decoration: none; transition: color 0.3s; }
+    .register-contacts a:hover { color: var(--coral); }
+
+    .form-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 40px 34px;
+      box-shadow: 0 8px 40px rgba(28,16,8,0.1);
+    }
+
+    .form-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .form-group { margin-bottom: 16px; }
+
+    .form-group label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text3);
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: var(--bg);
+      border: 1.5px solid rgba(28,16,8,0.12);
+      border-radius: 9px;
+      padding: 13px 15px;
+      color: var(--text);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.93rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .form-group select option { background: var(--white); }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--coral);
+      background: var(--white);
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .form-card .btn-primary { width: 100%; text-align: center; margin-top: 6px; }
+
+    /* ─── BANK ───────────────────────────────────── */
+    .bank { background: var(--bg2); padding: 60px 20px; }
+
+    .bank-inner { max-width: 560px; margin: 0 auto; text-align: center; }
+
+    .bank-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-top: 24px;
+      box-shadow: 0 4px 20px var(--shadow);
+      border-top: 3px solid var(--gold);
+    }
+
+    .bank-card h3 { color: var(--text); font-size: 1.1rem; margin-bottom: 18px; }
+
+    .bank-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(28,16,8,0.06);
+      font-size: 0.93rem;
+    }
+
+    .bank-row:last-child { border-bottom: none; }
+    .bank-row .bk-label { color: var(--text3); font-size: 12px; }
+    .bank-row .bk-val { color: var(--text); font-weight: 700; letter-spacing: 0.03em; }
+
+    /* ─── FOOTER ─────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      padding: 64px 20px 28px;
+    }
+
+    .footer-inner { max-width: 1180px; margin: 0 auto; }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 56px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      margin-bottom: 28px;
+    }
+
+    .footer-logo img { height: 44px; margin-bottom: 14px; }
+
+    .footer-desc {
+      color: rgba(255,255,255,0.4);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .social-links { display: flex; gap: 10px; }
+
+    .social-link {
+      width: 38px; height: 38px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: background 0.3s, border-color 0.3s, color 0.3s;
+    }
+
+    .social-link:hover { background: rgba(224,93,69,0.2); border-color: var(--coral); color: var(--coral-l); }
+
+    .footer-col h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 14px;
+    }
+
+    .footer-col ul { list-style: none; }
+
+    .footer-col ul li {
+      padding: 5px 0;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.88rem;
+    }
+
+    .footer-col ul li a {
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-col ul li a:hover { color: var(--coral-l); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: rgba(255,255,255,0.2);
+      font-size: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* ─── LIGHTBOX ────────────────────────────────── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(28,16,8,0.96);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .lightbox.open { opacity: 1; pointer-events: all; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 10px;
+      object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 22px; right: 28px;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+
+    .lightbox-close:hover { background: rgba(224,93,69,0.4); }
+
+    .lightbox-close svg { stroke: rgba(255,255,255,0.8); }
+
+    /* ─── MOBILE ─────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .teachers-grid { grid-template-columns: repeat(2, 1fr); }
+      .courses-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 120px 32px 60px; min-height: 100vh; }
+      .hero-right { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      header { padding: 0 20px; }
+      nav {
+        display: none;
+        position: fixed;
+        top: 72px; left: 0; right: 0;
+        background: var(--bg);
+        flex-direction: column;
+        padding: 24px 20px;
+        gap: 16px;
+        box-shadow: 0 8px 32px var(--shadow);
+      }
+      nav.open { display: flex; }
+      nav a { color: var(--text2) !important; }
+      .nav-cta { background: var(--coral); color: var(--white) !important; text-align: center; }
+      .burger { display: flex; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-image-wrap { order: -1; }
+      .teachers-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; }
+      .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+      .gallery-item:nth-child(5),
+      .gallery-item:nth-child(9) { grid-column: span 1; }
+      .courses-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .schedule-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .register-inner { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .hero-trust { flex-wrap: wrap; gap: 12px; }
+    }
+
+    @media (max-width: 480px) {
+      .teachers-grid { grid-template-columns: 1fr; }
+      .form-card { padding: 26px 18px; }
+      section { padding: 64px 16px; }
+      .hero-left { padding: 110px 24px 56px; }
+    }
+
+    /* ─── PARTNER STRIP ─────────────────────────────── */
+    .partner-strip-wrap {
+      padding: 18px 24px;
+      border-top: 1px solid rgba(201,168,76,.18);
+      background: var(--bg);
+    }
+    .partner-strip {
+      max-width: 960px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: center;
+      gap: 14px; flex-wrap: wrap;
+    }
+    .partner-label {
+      font-size: 0.75rem; color: var(--text3);
+      letter-spacing: .04em;
+    }
+    .partner-divider { color: var(--text3); font-size: 0.75rem; opacity: .4; }
+    .partner-link {
+      display: flex; align-items: center; gap: 9px;
+      text-decoration: none; opacity: .5;
+      transition: opacity .25s;
+    }
+    .partner-link:hover { opacity: .85; }
+    /* Logo on light bg → force dark */
+    .partner-logo {
+      height: 22px; flex-shrink: 0;
+      filter: brightness(0);
+    }
+    .partner-link-text {
+      font-size: 0.75rem; color: var(--text2);
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <a href="#" class="logo">
+    <img class="logo-white" src="https://1dance1.ee/wp-content/uploads/2020/08/Logo1-250px-white.png" alt="1+1 Dance Studio" />
+    <img class="logo-dark"  src="https://1dance1.ee/wp-content/uploads/2020/08/Logo1-250px-black.png"  alt="1+1 Dance Studio" />
+  </a>
+  <nav id="nav">
+    <a href="#opetajad">Õpetajad</a>
+    <a href="#tagasiside">Tagasiside</a>
+    <a href="#ajakava">Ajakava</a>
+    <a href="#hinnad">Hinnad</a>
+    <a href="#booking" class="nav-cta">Registreeri</a>
+  </nav>
+  <div class="burger" id="burger" onclick="toggleMenu()" aria-label="Menüü">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-left">
+    <div class="hero-badge">Tantsustuudio Tallinnas, Pirita</div>
+    <h1>
+      Võistlustants<br/>
+      <span class="hero-italic">lastele &amp; täiskasvanutele</span>
+    </h1>
+    <p class="hero-sub">
+      Rahvusvaheliste võistluste võitjad õpetavad teie last.<br/>
+      Alates 3 aastat. Esimene nädal on <span class="hero-free">TASUTA!</span>
+    </p>
+    <div class="hero-buttons">
+      <a href="#booking" class="btn-primary">Registreeri proovitrennile</a>
+      <a href="#opetajad" class="btn-outline">Tutvu õpetajatega</a>
+    </div>
+    <div class="hero-trust">
+      <div class="hero-trust-item">
+        <div class="hero-trust-num">4</div>
+        <div class="hero-trust-label">Meistrit-<br/>õpetajat</div>
+      </div>
+      <div class="hero-trust-divider"></div>
+      <div class="hero-trust-item">
+        <div class="hero-trust-num">10+</div>
+        <div class="hero-trust-label">Aastat<br/>kogemust</div>
+      </div>
+      <div class="hero-trust-divider"></div>
+      <div class="hero-trust-item">
+        <div class="hero-trust-num">3+</div>
+        <div class="hero-trust-label">Rühma<br/>vanuseaste</div>
+      </div>
+      <div class="hero-trust-divider"></div>
+      <div class="hero-trust-item">
+        <div class="hero-trust-num">Nr.1</div>
+        <div class="hero-trust-label">Rahvus-<br/>vahelised</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://1dance1.ee/wp-content/uploads/2020/11/IMG_7740-scaled.jpeg" alt="1+1 Dance Studio tantsutrenn" />
+    <div class="hero-right-overlay"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="section-label">Meie kohta</div>
+        <h2 class="section-title">Kus lapsed armastavad tantsida</h2>
+        <div class="section-line"></div>
+        <p>Võistlustants on sport, mis muudab lapsed plastilisteks, rütmitundlikeks, hästi koordineerituteks, paindlikeks, visadeks ja vastupidavateks.</p>
+        <p>Sirge rüht, kõigi lihasgruppide harmooniline areng, spetsiaalsete närviühendite loomine, mida ei looda ühegi teise spordiala puhul — see on meie stuudio filosoofia.</p>
+        <p>Tantsukooli õpetajad on mitmekordsed rahvusvaheliste võistluste võitjad, Eesti Meistrivõistluste medalivõitjad ning Maailmameistrivõistlustel Eesti esindajad. Pirita stuudiosse ootame tantsuhuvilisi alates 3 eluaastast.</p>
+        <div class="stats-row">
+          <div class="stat">
+            <div class="stat-num">4</div>
+            <div class="stat-label">Professionaalset<br/>õpetajat</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">10+</div>
+            <div class="stat-label">Aastat<br/>kogemust</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">3+</div>
+            <div class="stat-label">Vanusegrupp<br/>alates</div>
+          </div>
+          <div class="stat">
+            <div class="stat-num">Nr.1</div>
+            <div class="stat-label">Rahvusvahelised<br/>meistrid</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-image-wrap reveal">
+        <img src="https://1dance1.ee/wp-content/uploads/2020/09/IMG_6015.jpeg" alt="1+1 Dance Studio" loading="lazy" />
+        <div class="about-deco"></div>
+        <div class="about-deco-2"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="video-section" id="video">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:36px;" class="reveal">
+      <div class="section-label">Vaata meid</div>
+      <h2 class="section-title" style="font-size:2rem;">Tantsuelu stuudios</h2>
+    </div>
+    <div class="video-wrap reveal" id="yt-wrap">
+      <div onclick="loadYT()" style="cursor:pointer;position:relative;width:100%;height:100%;">
+        <img src="https://img.youtube.com/vi/zJihMisYaiA/maxresdefault.jpg"
+             onerror="this.src='https://img.youtube.com/vi/zJihMisYaiA/hqdefault.jpg'"
+             alt="1+1 Dance Studio — vaata videot"
+             style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(28,16,8,0.25);">
+          <div style="width:72px;height:72px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px rgba(224,93,69,0.45);transition:transform 0.3s;"
+               onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <polygon points="8,5 19,12 8,19" fill="white"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function loadYT() {
+        const w = document.getElementById('yt-wrap');
+        w.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/zJihMisYaiA?autoplay=1&rel=0&modestbranding=1" title="1+1 Dance Studio" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe>';
+      }
+    </script>
+  </div>
+</section>
+
+<!-- TEACHERS -->
+<section class="teachers" id="opetajad">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:52px;">
+      <div class="section-label">Professionaalid</div>
+      <h2 class="section-title">Meie tantsuõpetajad</h2>
+      <div class="section-line" style="margin:0 auto;"></div>
+    </div>
+    <div class="teachers-grid">
+
+      <div class="teacher-card reveal">
+        <div class="teacher-photo-wrap">
+          <img class="teacher-photo" src="https://1dance1.ee/wp-content/uploads/2021/06/valeria.jpg" alt="Valeria Ovcharenko" loading="lazy" />
+        </div>
+        <div class="teacher-info">
+          <div class="teacher-name">Valeria Ovcharenko</div>
+          <div class="teacher-title">Eesti &amp; Läti Meister · Koreograaf</div>
+          <p class="teacher-desc">Eesti ja Läti meister, mitmekordne rahvusvaheliste võistluste võitja. Maailmameistrivõistlustel Eesti ja Läti esindaja. Diplomeeritud koreograaf (Tallinna Ülikool). Õpetab võistlus- ja moodsa tantsu stiile.</p>
+        </div>
+      </div>
+
+      <div class="teacher-card reveal">
+        <div class="teacher-photo-wrap">
+          <img class="teacher-photo" src="https://1dance1.ee/wp-content/uploads/2021/05/irina-1.jpg" alt="Irina Sitnik-Potapov" loading="lazy" />
+        </div>
+        <div class="teacher-info">
+          <div class="teacher-name">Irina Sitnik-Potapov</div>
+          <div class="teacher-title">Peatreener · Eesti Meistrivõistluste medalist</div>
+          <p class="teacher-desc">Peatreener. Mitmekordne Eesti Meistrivõistluste hõbe- ja pronksmedalist. Tallinna Ülikooli pedagoogiline kõrgharidus. EOK 5. kategooria kutsetunnistus. Lastega üle 10 aasta.</p>
+        </div>
+      </div>
+
+      <div class="teacher-card reveal">
+        <div class="teacher-photo-wrap">
+          <img class="teacher-photo" src="https://1dance1.ee/wp-content/uploads/2021/05/stanislav-vares-2-1200px.jpg" alt="Stanislav Vares" loading="lazy" />
+        </div>
+        <div class="teacher-info">
+          <div class="teacher-name">Stanislav Vares</div>
+          <div class="teacher-title">3× Eesti Meister · Läti &amp; Norra Meister</div>
+          <p class="teacher-desc">Kolmekordne Eesti meister, Läti ja Norra meister, Põhja-Euroopa hõbemedalist. Pikk kogemus välismaal eri vanuses lastega — ainulaadne lähenemine õpetamisele.</p>
+        </div>
+      </div>
+
+      <div class="teacher-card reveal">
+        <div class="teacher-photo-wrap">
+          <img class="teacher-photo" src="https://1dance1.ee/wp-content/uploads/2021/05/oksana.png" alt="Oksana Saar" loading="lazy" />
+        </div>
+        <div class="teacher-info">
+          <div class="teacher-name">Oksana Saar</div>
+          <div class="teacher-title">Koreograaf · "Estonia" Balletitantsija</div>
+          <p class="teacher-desc">Eesti Rahvusoopera "Estonia" rahvusballetti tantsija. Tallinna Balletikool 2007. Tallinna Ülikool 2012. Alates 2019 koreograafia ja venituste tunnid tantsijatele, võimlejatele, iluuisutajatele.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="galerii">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:44px;">
+      <div class="section-label">Galerii</div>
+      <h2 class="section-title">Elu tantsustuudios</h2>
+      <div class="section-line" style="margin:0 auto;"></div>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item reveal" onclick="openLightbox('https://1dance1.ee/wp-content/uploads/2020/11/IMG_7740-scaled.jpeg')"><img src="https://1dance1.ee/wp-content/uploads/2020/11/IMG_7740-scaled.jpeg" alt="Tantsutrenn" loading="lazy" /></div>
+      <div class="gallery-item reveal" onclick="openLightbox('https://1dance1.ee/wp-content/uploads/2020/10/IMG_7065-scaled.jpeg')"><img src="https://1dance1.ee/wp-content/uploads/2020/10/IMG_7065-scaled.jpeg" alt="Tantsutrenn" loading="lazy" /></div>
+      <div class="gallery-item reveal" onclick="openLightbox('https://1dance1.ee/wp-content/uploads/2020/10/IMG_6669-e1602852338510.jpeg')"><img src="https://1dance1.ee/wp-content/uploads/2020/10/IMG_6669-e1602852338510.jpeg" alt="Tantsutrenn" loading="lazy" /></div>
+      <div class="gallery-item reveal" onclick="openLightbox('https://1dance1.ee/wp-content/uploads/2020/09/IMG_5553.jpeg')"><img src="https://1dance1.ee/wp-content/uploads/2020/09/IMG_5553.jpeg" alt="Tantsutrenn" loading="lazy" /></div>
+      <div class="gallery-item reveal" onclick="openLightbox('https://1dance1.ee/wp-content/uploads/2020/10/young_children_ballroom_dance.jpeg')"><img src="https://1dance1.ee/wp-content/uploads/2020/10/young_children_ballroom_dance.jpeg" alt="Tantsutrenn" loading="lazy" /></div>
+      <div class="gallery-item reveal" onclick="openLightbox('https://1dance1.ee/wp-content/uploads/2020/10/IMG_5974-scaled.jpeg')"><img src="https://1dance1.ee/wp-content/uploads/2020/10/IMG_5974-scaled.jpeg" alt="Tantsutrenn" loading="lazy" /></div>
+      <div class="gallery-item reveal" onclick="openLightbox('https://1dance1.ee/wp-content/uploads/2020/11/IMG_7013.jpeg')"><img src="https://1dance1.ee/wp-content/uploads/2020/11/IMG_7013.jpeg" alt="Tantsutrenn" loading="lazy" /></div>
+      <div class="gallery-item reveal" onclick="openLightbox('https://1dance1.ee/wp-content/uploads/2020/11/IMG_5933-scaled.jpeg')"><img src="https://1dance1.ee/wp-content/uploads/2020/11/IMG_5933-scaled.jpeg" alt="Tantsutrenn" loading="lazy" /></div>
+      <div class="gallery-item reveal" onclick="openLightbox('https://1dance1.ee/wp-content/uploads/2020/11/IMG_7826-e1604417158314.jpeg')"><img src="https://1dance1.ee/wp-content/uploads/2020/11/IMG_7826-e1604417158314.jpeg" alt="Tantsutrenn" loading="lazy" /></div>
+      <div class="gallery-item reveal" onclick="openLightbox('https://1dance1.ee/wp-content/uploads/2021/04/IMG_1718.jpg')"><img src="https://1dance1.ee/wp-content/uploads/2021/04/IMG_1718.jpg" alt="Tantsutrenn" loading="lazy" /></div>
+      <div class="gallery-item reveal" onclick="openLightbox('https://1dance1.ee/wp-content/uploads/2021/04/5.jpg')"><img src="https://1dance1.ee/wp-content/uploads/2021/04/5.jpg" alt="Tantsutrenn" loading="lazy" /></div>
+      <div class="gallery-item reveal" onclick="openLightbox('https://1dance1.ee/wp-content/uploads/2020/09/IMG_6015.jpeg')"><img src="https://1dance1.ee/wp-content/uploads/2020/09/IMG_6015.jpeg" alt="Tantsutrenn" loading="lazy" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section class="courses" id="kursused">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:52px;">
+      <div class="section-label">Meie programmid</div>
+      <h2 class="section-title">Tantsuõpetuse suunad</h2>
+      <div class="section-line" style="margin:0 auto;"></div>
+    </div>
+    <div class="courses-grid">
+
+      <div class="course-card reveal">
+        <div class="course-img-wrap">
+          <img src="https://1dance1.ee/wp-content/uploads/2020/11/IMG_5973-scaled.jpeg" alt="Võistlustants lastele" loading="lazy" />
+        </div>
+        <div class="course-content">
+          <span class="course-tag">Lapsed alates 3 aastat</span>
+          <h3 class="course-title">Võistlustants lastele</h3>
+          <p class="course-desc">Baby Dance, Kids Dance ja Competition grupid. Standardtants ja ladiintants professionaalsete meistrite käe all.</p>
+        </div>
+      </div>
+
+      <div class="course-card reveal">
+        <div class="course-img-wrap">
+          <img src="https://1dance1.ee/wp-content/uploads/2021/04/course1.jpg" alt="Pulmatants" loading="lazy" />
+        </div>
+        <div class="course-content">
+          <span class="course-tag">Täiskasvanud</span>
+          <h3 class="course-title">Pruutpaari pulmatants</h3>
+          <p class="course-desc">Ainulaadse tantsu loomine teie pulmadeks. Inspireeriva muusika valimine, koreograafia paari kõiki soove arvestades.</p>
+        </div>
+      </div>
+
+      <div class="course-card reveal">
+        <div class="course-img-wrap">
+          <img src="https://1dance1.ee/wp-content/uploads/2021/04/course2.jpg" alt="Seltskonnatants" loading="lazy" />
+        </div>
+        <div class="course-content">
+          <span class="course-tag">Täiskasvanud</span>
+          <h3 class="course-title">Seltskonnatantsu kursused</h3>
+          <p class="course-desc">Valss, Tango, Foxtrot, Quickstep, Samba, Tša-Tša-Tša, Rumba ja Džaiv. Solo Latin ja Social Dance paaris.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="hinnad">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:52px;">
+      <div class="section-label">Hinnakiri</div>
+      <h2 class="section-title">Läbipaistvad hinnad</h2>
+      <div class="section-line" style="margin:0 auto;"></div>
+    </div>
+    <div class="pricing-grid">
+
+      <div class="price-card featured reveal">
+        <div class="price-badge">TASUTA nädal!</div>
+        <div class="price-icon">
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="10" r="5" stroke="#e05d45" stroke-width="1.5" fill="none"/>
+            <path d="M6 28c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="#e05d45" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="price-category">Lapsed</div>
+        <div class="price-free">Esimene nädal on täiesti TASUTA!</div>
+        <ul class="price-list">
+          <li>
+            <span class="label">1 trenn nädalas</span>
+            <span class="amount">50 €<small style="font-size:0.7rem;color:var(--text3)">/kuu</small></span>
+          </li>
+          <li>
+            <span class="label">2 trenni nädalas</span>
+            <span class="amount">80 €<small style="font-size:0.7rem;color:var(--text3)">/kuu</small></span>
+          </li>
+          <li>
+            <span class="label">3 ja rohkem trenni nädalas</span>
+            <span class="amount">100 €<small style="font-size:0.7rem;color:var(--text3)">/kuu</small></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="price-card reveal">
+        <div class="price-icon">
+          <svg width="30" height="30" viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="10" r="5" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
+            <path d="M6 28c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="#c9a84c" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="price-category">Täiskasvanud</div>
+        <div class="price-free" style="opacity:0">–</div>
+        <ul class="price-list">
+          <li>
+            <span class="label">Seltskonnatantsu rühm</span>
+            <span class="amount">80 €<small style="font-size:0.7rem;color:var(--text3)">/kuu</small></span>
+          </li>
+          <li>
+            <span class="label">Solo Latin rühm</span>
+            <span class="amount">80 €<small style="font-size:0.7rem;color:var(--text3)">/kuu</small></span>
+          </li>
+          <li>
+            <span class="label">Pulmatants — hind kokkuleppel</span>
+            <span class="amount" style="font-size:0.85rem;letter-spacing:0.05em;color:var(--text2)">Küsida</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="schedule" id="ajakava">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:52px;">
+      <div class="section-label">Ajakava</div>
+      <h2 class="section-title">Treeningute graafik</h2>
+      <div class="section-line" style="margin:0 auto;"></div>
+    </div>
+    <div class="schedule-grid">
+
+      <div class="schedule-card reveal">
+        <span class="schedule-level lapsed">Lapsed</span>
+        <div class="schedule-name">Baby Dance</div>
+        <div class="schedule-age">Vanus 3+</div>
+        <ul class="schedule-days">
+          <li>Teisipäeviti<span class="schedule-time">17:15 – 18:00</span></li>
+        </ul>
+      </div>
+
+      <div class="schedule-card reveal">
+        <span class="schedule-level lapsed">Lapsed</span>
+        <div class="schedule-name">Kids Dance — 1</div>
+        <div class="schedule-age">Vanus 5+ <span class="new-badge">New!</span></div>
+        <ul class="schedule-days">
+          <li>Teisipäeviti<span class="schedule-time">18:15 – 19:15</span></li>
+          <li>Neljapäeviti<span class="schedule-time">18:15 – 19:15</span></li>
+        </ul>
+      </div>
+
+      <div class="schedule-card reveal">
+        <span class="schedule-level voistlus">Võistlus</span>
+        <div class="schedule-name">Competition</div>
+        <div class="schedule-age">Kõik vanused</div>
+        <ul class="schedule-days">
+          <li>Esmaspäeviti<span class="schedule-time">16:30 – 18:00</span></li>
+          <li>Teisipäeviti<span class="schedule-time">16:30 – 18:00</span></li>
+          <li>Neljapäeviti<span class="schedule-time">16:30 – 18:00</span></li>
+        </ul>
+      </div>
+
+      <div class="schedule-card reveal">
+        <span class="schedule-level lapsed">Lapsed</span>
+        <div class="schedule-name">Kids Dance — 2</div>
+        <div class="schedule-age">Vanus 8+</div>
+        <ul class="schedule-days">
+          <li>Esmaspäeviti<span class="schedule-time">18:00 – 19:30</span></li>
+          <li>Teisipäeviti<span class="schedule-time">18:00 – 19:30</span></li>
+          <li>Neljapäeviti<span class="schedule-time">18:00 – 19:30</span></li>
+          <li>Reedeti<span class="schedule-time">17:00 – 18:30</span></li>
+        </ul>
+      </div>
+
+      <div class="schedule-card reveal">
+        <span class="schedule-level taiskasvanud">Täiskasvanud</span>
+        <div class="schedule-name">Solo Latin</div>
+        <div class="schedule-age">Seltskonnatants</div>
+        <ul class="schedule-days">
+          <li>Esmaspäeviti<span class="schedule-time">18:45 – 19:45</span></li>
+          <li>Kolmapäeviti<span class="schedule-time">18:45 – 19:45</span></li>
+        </ul>
+      </div>
+
+      <div class="schedule-card reveal">
+        <span class="schedule-level taiskasvanud">Täiskasvanud</span>
+        <div class="schedule-name">Social Dance paaris</div>
+        <div class="schedule-age">Seltskonnatants</div>
+        <ul class="schedule-days">
+          <li>Teisipäeviti<span class="schedule-time">19:45 – 20:45</span></li>
+          <li>Neljapäeviti<span class="schedule-time">19:45 – 20:45</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="tagasiside">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:52px;">
+      <div class="section-label">Tagasiside</div>
+      <h2 class="section-title">Mida räägivad lapsevanemad</h2>
+      <div class="section-line" style="margin:0 auto;"></div>
+    </div>
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card reveal">
+        <div class="quote-icon">"</div>
+        <div class="testimonial-stars"><span></span><span></span><span></span><span></span><span></span></div>
+        <p class="testimonial-text">Väga tore ja hubane tantsukool. Uhked õpetajad. Individuaalne lähenemine kõigile.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">J</div>
+          <div>
+            <div class="author-name">Julia</div>
+            <div class="author-role">Lapsevanem</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <div class="quote-icon">"</div>
+        <div class="testimonial-stars"><span></span><span></span><span></span><span></span><span></span></div>
+        <p class="testimonial-text">Suurepärased, tähelepanelikud, õpetajad. Lapsel on hea meel tantsudes käia!</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">H</div>
+          <div>
+            <div class="author-name">Helena</div>
+            <div class="author-role">Lapsevanem</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <div class="quote-icon">"</div>
+        <div class="testimonial-stars"><span></span><span></span><span></span><span></span><span></span></div>
+        <p class="testimonial-text">Pärast iga treeningut lahkub laps säravate silmadega jõusaalist. Oleme rõõmsad. Aitäh Irina!</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">V</div>
+          <div>
+            <div class="author-name">Veronika isa</div>
+            <div class="author-role">Lapsevanem</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- REGISTER -->
+<section class="register" id="booking">
+  <div class="container">
+    <div class="register-inner">
+      <div class="register-info reveal">
+        <div class="section-label">Registreerimine</div>
+        <h2 class="section-title">Alusta tantselemist juba täna</h2>
+        <div class="section-line"></div>
+        <p>Täitke registreerimisvorm ja meie kontakteerume teiega esimesel võimalusel. Esimene nädal on TASUTA — tulge proovitreeningusse!</p>
+        <ul class="register-contacts">
+          <li>
+            <div class="contact-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e05d45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.02 1.18 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+            </div>
+            <a href="tel:+37251962202">+372 5196 2202</a>
+          </li>
+          <li>
+            <div class="contact-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e05d45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <a href="mailto:info@1dance1.ee">info@1dance1.ee</a>
+          </li>
+          <li>
+            <div class="contact-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e05d45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <a href="https://www.google.com/maps/dir//59.4661347,24.8255028/@59.466116,24.7554636,12z" target="_blank" rel="noopener">Purje tn 8, Tallinn, 11911</a>
+          </li>
+          <li>
+            <div class="contact-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e05d45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </div>
+            <a href="https://www.facebook.com/1DANCESTUDIO1/" target="_blank" rel="noopener">1 + 1 Dance Studio (Facebook)</a>
+          </li>
+          <li>
+            <div class="contact-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e05d45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </div>
+            <a href="https://www.instagram.com/dance_studio1_1/" target="_blank" rel="noopener">@dance_studio1_1 (Instagram)</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="form-card reveal">
+        <h3>Registreeri proovitrennile</h3>
+        <form onsubmit="handleForm(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Teie nimi</label>
+              <input type="text" id="name" name="name" placeholder="Eesnimi Perenimi" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefoni number</label>
+              <input type="tel" id="phone" name="phone" placeholder="+372 ..." required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Meili aadress</label>
+            <input type="email" id="email" name="email" placeholder="teie@email.ee" required />
+          </div>
+          <div class="form-group">
+            <label for="group">Rühm</label>
+            <select id="group" name="group" required>
+              <option value="">— Valige rühm —</option>
+              <option value="baby">Baby Dance (vanus 3+)</option>
+              <option value="kids1">Kids Dance-1 (vanus 5+)</option>
+              <option value="kids2">Kids Dance-2 (vanus 8+)</option>
+              <option value="adult">Täiskasvanud «Seltskonnatantsu rühm»</option>
+              <option value="wedding">Pulmatants</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="info">Lapse sugu ja vanus (kui sobib)</label>
+            <input type="text" id="info" name="info" placeholder="nt. tüdruk, 6 aastat" />
+          </div>
+          <button type="submit" class="btn-primary">Registreeri</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANK -->
+<section class="bank" id="pangaandmed">
+  <div class="bank-inner">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-label">Pangaandmed</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--text);">Tasumise info</h2>
+    </div>
+    <div class="bank-card reveal">
+      <h3>1+1 Tantsustuudio MTÜ</h3>
+      <div class="bank-row"><span class="bk-label">Pank</span><span class="bk-val">Swedbank</span></div>
+      <div class="bank-row"><span class="bk-label">IBAN</span><span class="bk-val">EE12 2200 2210 7422 8697</span></div>
+      <div class="bank-row"><span class="bk-label">SWIFT</span><span class="bk-val">HABAEE2X</span></div>
+      <div class="bank-row"><span class="bk-label">Reg. kood</span><span class="bk-val">80582909</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNER STRIP -->
+<div class="partner-strip-wrap">
+  <div class="partner-strip">
+    <span class="partner-label">Tantsufänn? Täispika Ballroom show Eestist</span>
+    <span class="partner-divider">·</span>
+    <a href="https://ballroomtheatre.com" target="_blank" rel="noopener" class="partner-link">
+      <img src="https://static.wixstatic.com/media/4db91b_9f410af3e4164b5bbb2d76de412c9168~mv2.png" alt="Ballroom Theatre" class="partner-logo" />
+      <span class="partner-link-text">ballroomtheatre.com →</span>
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="kontaktid">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">
+          <img src="https://1dance1.ee/wp-content/uploads/2020/08/Logo1-250px-white.png" alt="1+1 Dance Studio" />
+        </div>
+        <p class="footer-desc">Tantsustuudio Tallinnas, Pirita. Võistlustants lastele alates 3 aastat. Rahvusvaheliste võitjate käe all.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/1DANCESTUDIO1/" target="_blank" rel="noopener" class="social-link" title="Facebook">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/dance_studio1_1/" target="_blank" rel="noopener" class="social-link" title="Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://www.youtube.com/watch?v=zJihMisYaiA" target="_blank" rel="noopener" class="social-link" title="YouTube">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75,15.02 15.5,12 9.75,8.98 9.75,15.02"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigatsioon</h4>
+        <ul>
+          <li><a href="#opetajad">Õpetajad</a></li>
+          <li><a href="#galerii">Galerii</a></li>
+          <li><a href="#kursused">Kursused</a></li>
+          <li><a href="#hinnad">Hinnakiri</a></li>
+          <li><a href="#ajakava">Ajakava</a></li>
+          <li><a href="#tagasiside">Tagasiside</a></li>
+          <li><a href="#booking">Registreeri</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kontaktid</h4>
+        <ul>
+          <li><a href="tel:+37251962202">+372 5196 2202</a></li>
+          <li><a href="mailto:info@1dance1.ee">info@1dance1.ee</a></li>
+          <li><a href="https://www.google.com/maps/dir//59.4661347,24.8255028" target="_blank" rel="noopener">Purje tn 8, Tallinn</a></li>
+          <li>Harjumaa, 11911</li>
+          <li style="margin-top:10px;color:rgba(255,255,255,0.2);font-size:11px;">Reg. kood: 80582909</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 1+1 Tantsustuudio MTÜ. Kõik õigused kaitstud.</span>
+      <span>Tantsustuudio Tallinnas, Pirita · Purje tn 8</span>
+    </div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <img id="lightbox-img" src="" alt="Galerii foto" onclick="event.stopPropagation()" />
+</div>
+
+<script>
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  function toggleMenu() {
+    document.getElementById('nav').classList.toggle('open');
+  }
+
+  document.querySelectorAll('nav a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('nav').classList.remove('open'));
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 55);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  function handleForm(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-primary');
+    const orig = btn.textContent;
+    btn.textContent = 'Registreering saadetud!';
+    btn.style.background = '#4caf50';
+    setTimeout(() => {
+      btn.textContent = orig;
+      btn.style.background = '';
+      e.target.reset();
+    }, 4000);
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
